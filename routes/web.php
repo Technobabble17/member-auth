@@ -11,6 +11,8 @@ Route::middleware('guest:members')->group(function () {
     Route::post('member/login', [MemberAuthController::class, 'login'])->name('member.login');
 });
 
-Route::post('member/logout', [MemberAuthController::class, 'logout'])->name('member.logout')->middleware('auth:members');
-
-Route::get('member/dashboard', [MemberAuthController::class, 'dashboard'])->middleware('auth:members')->name('member.dashboard');
+Route::middleware('auth:members')->group(function () {
+    Route::get('members', [MemberAuthController::class, 'showMembers'])->name('member.index');
+    Route::post('member/logout', [MemberAuthController::class, 'logout'])->name('member.logout');
+    Route::get('member/dashboard', [MemberAuthController::class, 'dashboard'])->name('member.dashboard');
+});

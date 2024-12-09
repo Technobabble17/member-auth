@@ -14,13 +14,40 @@ class MemberAuthController extends Controller
         return view('member.register');
     }
 
+    public function dashboard()
+    {
+        $member = Auth::guard('members')->user();
+        return view('member.dashboard', compact('member'));
+    }
+
+    public function showMembers()
+    {
+        $members = Member::all();
+        return view('member.index', compact('members'));
+    }
+
     public function register(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:members,email',
-            'password' => 'required|min:8|confirmed',
-        ]);
+        $request->validate(
+            [
+                'name' => 'required|string|max:255|min:2',
+                'email' => [
+                    'required',
+                    'email:rfc,dns',
+                    'unique:members,email'
+                ],
+                'password' => [
+                    'required',
+                    'min:8',
+                    'confirmed',
+                    'regex:/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/'
+                ]
+
+            ],
+            [
+                'password.regex' => 'Your password must contain at least:<ul><li><p>8 characters,</p></li><li><p>(1) uppercase letter,</p></li><li><p>(1) digit,</p></li><li><p>(1) special character (@$!%*?&).</p></li></ul'
+            ]
+        );
 
         $member = Member::create([
             'name' => $request->name,
@@ -62,12 +89,5 @@ class MemberAuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
-    }
-
-    public function dashboard()
-    {
-        // Access the authenticated member with Auth::guard('members')->user()
-        $member = Auth::guard('members')->user();
-        return view('member.dashboard', compact('member'));
     }
 }
