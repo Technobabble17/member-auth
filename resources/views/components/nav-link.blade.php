@@ -1,3 +1,3 @@
 <li>
-    <a href="{{ $href }}" class="block {{ request()->is($href) ? 'link-active' : 'link' }}">{{ $label }}</a>
+    <a href="{{ route($routeName) }}" class="block {{ request()->routeIs($routeName) ? 'link-active' : 'link' }}">{{ $label }}</a>
 </li>

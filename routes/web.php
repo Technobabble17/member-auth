@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberAuthController;
 
+Route::get('/', function () {
+    return view('home');
+})->name('home');
+
 Route::middleware('guest:members')->group(function () {
     Route::get('member/register', [MemberAuthController::class, 'showRegisterForm'])->name('member.register.show');
     Route::post('member/register', [MemberAuthController::class, 'register'])->name('member.register');

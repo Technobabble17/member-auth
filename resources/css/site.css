@@ -13,9 +13,9 @@
         @apply text-white  bg-gray-600 hover:bg-gray-700 focus:ring-blue-800;
     }
     .link {
-        @apply py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:p-0;
+        @apply py-2 px-3 text-white rounded md:p-0;
     }
     .link-active {
-        @apply py-2 px-3 text-blue-500 bg-blue-700 !important;
+        @apply text-blue-500 !important;
     }
 }
