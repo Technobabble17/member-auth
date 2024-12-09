@@ -4,6 +4,8 @@ export default {
         './resources/**/*.antlers.html',
         './resources/**/*.antlers.php',
         './resources/**/*.blade.php',
+        './resources/**/**/*.blade.php',
+        './resources/**/**/*.antlers.html',
         './resources/**/*.vue',
         './content/**/*.md',
     ],
