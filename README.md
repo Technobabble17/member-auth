@@ -16,7 +16,6 @@ This project implements a custom authentication system for a "Members" collectio
 2. [Authentication Guard and Provider](#authentication-guard-and-provider)
 3. [Routes and Controllers](#routes-and-controllers)
 4. [Views](#views)
-5. [Member Registration and Login](#member-registration-and-login)
 ---
 
 ## Creating the Members Collection
