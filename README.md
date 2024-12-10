@@ -9,7 +9,7 @@ This project implements a custom authentication system for a "Members" collectio
 - **Member Login:** Members can log in with their email and password.
 - **Member Dashboard:** Members can access a dashboard with their profile information.
 - **Member Logout:** Members can log out of their account.
-- **Member Profile:** Members can view and edit their profile information from the Statamic Control Panel.
+- **Member Profile:** Admins can view and edit member profile information from the Statamic Control Panel.
 
 ## Table of Contents
 1. [Creating the Members Collection](#creating-the-members-collection)
