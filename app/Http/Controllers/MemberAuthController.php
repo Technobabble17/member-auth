@@ -11,6 +11,9 @@ class MemberAuthController extends Controller
 {
     public function showRegisterForm()
     {
+        if (Auth::guard('members')->check()) {
+            return redirect()->route('member.dashboard');
+        }
         return view('member.register');
     }
 
@@ -62,6 +65,9 @@ class MemberAuthController extends Controller
 
     public function showLoginForm()
     {
+        if (Auth::guard('members')->check()) {
+            return redirect()->route('member.dashboard');
+        }
         return view('member.login');
     }
 

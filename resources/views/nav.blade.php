@@ -71,7 +71,7 @@
                 </form>
             @endif
             @if (!Auth::guard('members')->check())
-                <a href="{{ route('member.login.show') }}" class="btn btn-secondary">Login</a>
+                <a href="{{ route('login') }}" class="btn btn-secondary">Login</a>
                 <a href="{{ route('member.register.show') }}" class="btn btn-primary">Register</a>
             @endif
             <!-- Mobile menu button -->
