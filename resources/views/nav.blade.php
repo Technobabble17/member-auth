@@ -67,12 +67,11 @@
             @if (Auth::guard('members')->check())
                 <form method="POST" action="{{ route('member.logout') }}">
                     @csrf
-                    <button type="submit" class="btn btn-primary">Logout</button>
+                    <button type="submit" class="btn btn-secondary">Logout</button>
                 </form>
             @endif
             @if (!Auth::guard('members')->check())
-                <a href="{{ route('login') }}" class="btn btn-secondary">Login</a>
-                <a href="{{ route('member.register.show') }}" class="btn btn-primary">Register</a>
+                <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
             @endif
             <!-- Mobile menu button -->
             <button data-collapse-toggle="navbar-sticky" type="button"

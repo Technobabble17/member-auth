@@ -48,6 +48,11 @@
                 </ul>
             </div>
         @endif
+        <div class="mt-8 text-center">
+            <p class="text-white text-sm">
+                Already have an account? <a href="{{ route('login') }}" class="relative no-underline text-blue-400 hover:text-blue-300 after:bg-blue-400 after:absolute after:h-[2px] after:w-full after:-bottom-[2px] after:left-0 hover:after:translate-x-2 hover:after:bg-blue-300 after:transition-all after:duration-300">Login here</a>.
+            </p>
+        </div>
     </div>
 
 @endsection
