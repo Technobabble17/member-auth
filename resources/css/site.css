@@ -18,4 +18,8 @@
     .link-active {
         @apply text-blue-500 !important;
     }
+
+    .prose :is([id]) {
+        @apply scroll-mt-48 !important;
+    }
 }
