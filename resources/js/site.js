@@ -12,4 +12,15 @@ document.addEventListener('DOMContentLoaded', function () {
     scrollToTopButton.addEventListener('click', function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // status (logout) alert timeout
+    const alertElement = document.getElementById('status-alert');
+    if (alertElement) {
+        const timeout = alertElement.dataset.timeout || 3000;
+        setTimeout(() => {
+            alertElement.style.transition = "opacity 0.5s ease";
+            alertElement.style.opacity = "0";
+            setTimeout(() => alertElement.remove(), 500);
+        }, timeout);
+    }
 });
