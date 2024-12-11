@@ -14,8 +14,8 @@
 
     <main class="prose min-h-dvh max-w-screen-xl mx-auto p-4 mt-16">
         @if (session('status'))
-            <div id="status-alert" data-timeout="3000" class="alert alert-success ml-auto">
-                <p class="text-right">{{ session('status') }}</p>
+            <div id="status-alert" data-timeout="3000" class="text-green-500 bg-gray-900 w-fit rounded-md my-1 ml-auto">
+                <p class="text-right px-2 py-1">{{ session('status') }}</p>
             </div>
         @endif
         @yield('content')
