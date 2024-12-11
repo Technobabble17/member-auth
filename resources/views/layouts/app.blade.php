@@ -15,6 +15,8 @@
     </main>
 
     @include('footer')
-
+    <button id="scrollToTop" class="hidden fixed bottom-2 right-2 bg-blue-500 text-white py-4 px-5 rounded-full">
+        ↑
+    </button>
 </body>
 </html>
