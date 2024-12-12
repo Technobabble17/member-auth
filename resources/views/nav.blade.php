@@ -11,7 +11,7 @@
                 </div>
             </a>
         </div>
-        <div class="flex md:order-2 md:w-1/3 space-x-3 md:space-x-0 md:justify-end rtl:space-x-reverse gap-4">
+        <div class="flex items-center md:order-2 md:w-1/3 space-x-3 md:space-x-0 md:justify-end rtl:space-x-reverse gap-4">
             @if (Auth::guard('members')->check())
                 <form method="POST" action="{{ route('member.logout') }}">
                     @csrf

@@ -6,7 +6,7 @@
 
 <div class="mt-8 text-center">
     <p class="text-5xl text-blue-700 capitalize">Welcome, {{ Auth::user()->name }}!</p>
-    <p class=" text-blue-700 text-xl">This is your dashboard. Take a look around!</p>
+    <p class=" text-blue-700 text-xl">This is your (fake) dashboard.</p>
 </div>
 
 <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
@@ -364,12 +364,6 @@
               <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Custom...</a>
             </div>
         </div>
-      </div>
-      <div class="flex-shrink-0">
-        <a href="#" class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
-         Transactions Report
-          <svg class="w-4 h-4 ml-1 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-        </a>
       </div>
     </div>
   </div>
