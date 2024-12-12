@@ -15,6 +15,10 @@ return [
         \App\Models\Member::class => [
             'name' => 'Members',
         ],
+        \App\Models\Transaction::class => [
+            'name' => 'Transaction',
+            'blueprint' => 'runway.transactions',
+        ],
     ],
 
     /*
