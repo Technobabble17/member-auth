@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -62,6 +63,29 @@ class MemberAuthController extends Controller
         Auth::guard('members')->login($member);
 
         return redirect()->route('member.dashboard');
+    }
+    public function createTransaction(Request $request)
+    {
+        $request->validate(
+            [
+                'name' => 'required|string|max:255|min:2',
+                'amount' => 'required|numeric',
+                'reference_number' => 'required|string|unique:transactions,reference_number',
+                'payment_method' => 'required|digits:16',
+            ]
+        );
+
+        $transaction = Transaction::create([
+            'member_id' => Auth::guard('members')->id(),
+            'name' => $request->name,
+            'date' => now()->toDateString(),
+            'amount' => $request->amount,
+            'reference_number' => $request->reference_number,
+            'payment_method' => $request->payment_method,
+            'payment_status' => 'inprogress',
+        ]);
+
+            return redirect()->route('member.dashboard')->with('success', 'Transaction created successfully');
     }
 
     public function showLoginForm()

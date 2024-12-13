@@ -7,7 +7,9 @@
     <div class="container">
         <div class="mt-8 text-center">
             <p class="text-5xl text-blue-700 capitalize">Welcome, {{ Auth::user()->name }}!</p>
-            <p class=" text-blue-700 text-xl text-center max-w-2xl mx-auto">This is your transaction dashboard. Transactions are currently added in the control panel, and linked via the member id. The next version will provide the relationship based on email!</p>
+            <p class=" text-blue-700 text-xl text-center max-w-2xl mx-auto">This is your transaction dashboard. Transactions
+                are currently added in the control panel, and linked via the member id. The next version will provide the
+                relationship based on email!</p>
         </div>
 
         <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
@@ -122,5 +124,53 @@
                 </div>
             </div>
         </div>
+    </div>
 
-    @endsection
+    <div class="max-w-md mx-auto rounded bg-gray-700 p-8 mt-8 pb-16 overflow-hidden shadow shadow-blue-600">
+        <p class="text-white text-2xl font-semibold">Add a new transaction</p>
+        <form action="{{ route('member.transaction.create') }}" method="post" class="">
+            @csrf
+            @include('components.input', [
+                'name' => 'name',
+                'type' => 'text',
+                'required' => true,
+                'label' => 'Transaction Name',
+                'value' => old('name'),
+            ])
+            @include('components.input', [
+                'name' => 'amount',
+                'type' => 'number',
+                'required' => true,
+                'label' => 'Amount',
+                'value' => old('amount'),
+            ])
+            @include('components.input', [
+                'name' => 'reference_number',
+                'type' => 'number',
+                'required' => true,
+                'label' => 'Reference Number',
+            ])
+            @include('components.input', [
+                'name' => 'payment_method',
+                'type' => 'number',
+                'required' => true,
+                'label' => 'Credit Card',
+            ])
+
+            <button type="submit"
+                class="ml-auto text-white focus:ring-4 focus:ring-white focus:outline-none font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700">Submit</button>
+        </form>
+        @if ($errors->any())
+            <div class="mt-24">
+                <ul class="prose prose-p:text-red-500 prose-p:m-0">
+                    @foreach ($errors->all() as $error)
+                        <li>
+                            <p class="">{!! $error !!}</p>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    </div>
+
+@endsection

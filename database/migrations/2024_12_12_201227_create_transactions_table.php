@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('date');
             $table->decimal('amount', 8, 2);
             $table->string('reference_number');
-            $table->string('payment_method');
+            $table->unsignedBigInteger('payment_method')->length(16);
             $table->enum('payment_status', ['completed', 'cancelled', 'inprogress', 'in-review'])->default('inprogress');
             $table->timestamps();
         });

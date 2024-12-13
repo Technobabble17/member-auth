@@ -14,13 +14,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // status (logout) alert timeout
-    const alertElement = document.getElementById('status-alert');
-    if (alertElement) {
-        const timeout = alertElement.dataset.timeout || 3000;
-        setTimeout(() => {
-            alertElement.style.transition = "opacity 0.5s ease";
-            alertElement.style.opacity = "0";
-            setTimeout(() => alertElement.remove(), 500);
-        }, timeout);
-    }
+    ['status-alert', 'error-alert', 'success-alert'].forEach(id => {
+        const alertElement = document.getElementById(id);
+        if (alertElement) {
+            const timeout = alertElement.dataset.timeout || 3000;
+            setTimeout(() => {
+                alertElement.style.transition = "opacity 0.5s ease";
+                alertElement.style.opacity = "0";
+                setTimeout(() => alertElement.remove(), 500);
+            }, timeout);
+        }
+    });
 });
