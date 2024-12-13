@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+// TODO: transactions should be in separate controller
 class MemberAuthController extends Controller
 {
     public function showRegisterForm()

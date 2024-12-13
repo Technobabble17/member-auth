@@ -126,6 +126,7 @@
         </div>
     </div>
 
+    <!-- // TODO: setup as inputs inside the tabel -->
     <div class="max-w-md mx-auto rounded bg-gray-700 p-8 mt-8 pb-16 overflow-hidden shadow shadow-blue-600">
         <p class="text-white text-2xl font-semibold">Add a new transaction</p>
         <form action="{{ route('member.transaction.create') }}" method="post" class="">
