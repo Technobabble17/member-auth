@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="">
         <div class="mt-8 text-center">
             <p class="text-5xl text-blue-700 capitalize">Welcome, {{ Auth::user()->name }}!</p>
             <p class=" text-blue-700 text-xl text-center max-w-2xl mx-auto">This is your transaction dashboard. Transactions
@@ -117,6 +117,56 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                    <form action="{{ route('member.transaction.create') }}" method="post">
+                                        @csrf
+                                        <tr class="max-lg:hidden">
+                                            <td
+                                                class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+                                                @include('components.input', [
+                                                    'name' => 'name',
+                                                    'type' => 'text',
+                                                    'required' => true,
+                                                    'label' => 'Transaction Name',
+                                                    'value' => old('name'),
+                                                ])
+                                            </td>
+                                            <td
+                                                class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                {{ now()->format('M d, Y') }}
+                                            </td>
+                                            <td
+                                                class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+                                                @include('components.input', [
+                                                    'name' => 'amount',
+                                                    'type' => 'number',
+                                                    'required' => true,
+                                                    'label' => 'Amount',
+                                                    'value' => old('amount'),
+                                                ])
+                                            </td>
+                                            <td
+                                                class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                @include('components.input', [
+                                                    'name' => 'reference_number',
+                                                    'type' => 'number',
+                                                    'required' => true,
+                                                    'label' => 'Reference Number',
+                                                ])
+                                            </td>
+                                            <td
+                                                class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                @include('components.input', [
+                                                    'name' => 'payment_method',
+                                                    'type' => 'number',
+                                                    'required' => true,
+                                                    'label' => 'Credit Card',
+                                                ])
+                                            </td>
+                                            <td>
+                                                <button type="submit" class="btn btn-primary w-full">Add</button>
+                                            </td>
+                                        </tr>
+                                    </form>
                                 </tbody>
                             </table>
                         </div>
@@ -127,7 +177,7 @@
     </div>
 
     <!-- // TODO: setup as inputs inside the tabel -->
-    <div class="max-w-md mx-auto rounded bg-gray-700 p-8 mt-8 pb-16 overflow-hidden shadow shadow-blue-600">
+    <div class="max-w-md lg:hidden mx-auto rounded bg-gray-700 p-8 mt-8 pb-16 overflow-hidden shadow shadow-blue-600">
         <p class="text-white text-2xl font-semibold">Add a new transaction</p>
         <form action="{{ route('member.transaction.create') }}" method="post" class="">
             @csrf
