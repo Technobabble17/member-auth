@@ -62,20 +62,16 @@
                                     @endif
                                     @foreach ($transactions as $transaction)
                                         <tr>
-                                            <td
-                                                class="p-4 text-sm font-normal whitespace-nowrap text-white">
+                                            <td class="p-4 text-sm font-normal whitespace-nowrap text-white">
                                                 {{ $transaction->name }}
                                             </td>
-                                            <td
-                                                class="p-4 text-sm font-normal whitespace-nowrap text-gray-400">
+                                            <td class="p-4 text-sm font-normal whitespace-nowrap text-gray-400">
                                                 {{ \Carbon\Carbon::parse($transaction->date)->format('M d, Y') }}
                                             </td>
-                                            <td
-                                                class="p-4 text-sm font-semibold whitespace-nowrap text-white">
+                                            <td class="p-4 text-sm font-semibold whitespace-nowrap text-white">
                                                 ${{ number_format($transaction->amount, 2) }}
                                             </td>
-                                            <td
-                                                class="p-4 text-sm font-normal whitespace-nowrap text-gray-400">
+                                            <td class="p-4 text-sm font-normal whitespace-nowrap text-gray-400">
                                                 {{ $transaction->reference_number }}
                                             </td>
                                             <td
@@ -106,8 +102,7 @@
                                             <td class="p-4 whitespace-nowrap">
                                                 <span
                                                     class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md bg-gray-700 border border-green-100
-                                                    @if ($transaction->payment_status === 'completed')
-                                                    text-green-400 border-green-500
+                                                    @if ($transaction->payment_status === 'completed') text-green-400 border-green-500
                                                     @elseif($transaction->payment_status === 'cancelled')
                                                         text-red-400 border-red-500
                                                     @elseif($transaction->payment_status === 'inprogress')
@@ -147,12 +142,10 @@
                                                     'value' => old('name'),
                                                 ])
                                             </td>
-                                            <td
-                                                class="p-4 text-sm font-normal whitespace-nowrap text-gray-400">
+                                            <td class="p-4 text-sm font-normal whitespace-nowrap text-gray-400">
                                                 {{ now()->format('M d, Y') }}
                                             </td>
-                                            <td
-                                                class="p-4 text-sm font-semibold whitespace-nowrap text-white">
+                                            <td class="p-4 text-sm font-semibold whitespace-nowrap text-white">
                                                 @include('components.input', [
                                                     'name' => 'amount',
                                                     'type' => 'number',
@@ -161,8 +154,7 @@
                                                     'value' => old('amount'),
                                                 ])
                                             </td>
-                                            <td
-                                                class="p-4 text-sm font-normal whitespace-nowrap text-gray-400">
+                                            <td class="p-4 text-sm font-normal whitespace-nowrap text-gray-400">
                                                 @include('components.input', [
                                                     'name' => 'reference_number',
                                                     'type' => 'number',
