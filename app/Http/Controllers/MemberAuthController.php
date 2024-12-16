@@ -94,7 +94,7 @@ class MemberAuthController extends Controller
             'payment_status' => 'inprogress',
         ]);
 
-            return redirect()->route('member.dashboard')->with('success', 'Transaction created successfully');
+        return redirect()->route('member.dashboard')->with('success', 'Transaction created successfully');
     }
 
     public function showLoginForm()
