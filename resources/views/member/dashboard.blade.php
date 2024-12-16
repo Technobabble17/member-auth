@@ -12,12 +12,12 @@
                 relationship based on email!</p>
         </div>
 
-        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+        <div class="p-4 border rounded-lg shadow-sm border-gray-700 sm:p-6 bg-gray-800">
             <!-- Card header -->
             <div class="items-center justify-between lg:flex">
                 <div class="mb-4 lg:mb-0">
-                    <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">Transactions</h3>
-                    <span class="text-base font-normal text-gray-500 dark:text-gray-400">This is a list of latest
+                    <h3 class="mb-2 text-xl font-bold text-white">Transactions</h3>
+                    <span class="text-base font-normal text-gray-400">This is a list of latest
                         transactions</span>
                 </div>
             </div>
@@ -26,60 +26,60 @@
                 <div class="overflow-x-auto rounded-lg">
                     <div class="inline-block min-w-full align-middle">
                         <div class="overflow-hidden shadow sm:rounded-lg">
-                            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
-                                <thead class="bg-gray-50 dark:bg-gray-700">
+                            <table class="min-w-full divide-y divide-gray-600">
+                                <thead class="bg-gray-700">
                                     <tr>
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                                            class="p-4 text-xs font-medium tracking-wider text-left uppercase text-white">
                                             Transaction
                                         </th>
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                                            class="p-4 text-xs font-medium tracking-wider text-left uppercase text-white">
                                             Date &amp; Time
                                         </th>
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                                            class="p-4 text-xs font-medium tracking-wider text-left uppercase text-white">
                                             Amount
                                         </th>
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                                            class="p-4 text-xs font-medium tracking-wider text-left uppercase text-white">
                                             Reference number
                                         </th>
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                                            class="p-4 text-xs font-medium tracking-wider text-left uppercase text-white">
                                             Payment method
                                         </th>
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                                            class="p-4 text-xs font-medium tracking-wider text-left uppercase text-white">
                                             Status
                                         </th>
                                     </tr>
                                 </thead>
 
-                                <tbody class="bg-white dark:bg-gray-800">
+                                <tbody class="bg-gray-800">
                                     @if ($transactions->isEmpty())
                                         <p class="text-white">You have no transactions yet!</p>
                                     @endif
                                     @foreach ($transactions as $transaction)
                                         <tr>
                                             <td
-                                                class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+                                                class="p-4 text-sm font-normal whitespace-nowrap text-white">
                                                 {{ $transaction->name }}
                                             </td>
                                             <td
-                                                class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                class="p-4 text-sm font-normal whitespace-nowrap text-gray-400">
                                                 {{ \Carbon\Carbon::parse($transaction->date)->format('M d, Y') }}
                                             </td>
                                             <td
-                                                class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+                                                class="p-4 text-sm font-semibold whitespace-nowrap text-white">
                                                 ${{ number_format($transaction->amount, 2) }}
                                             </td>
                                             <td
-                                                class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                class="p-4 text-sm font-normal whitespace-nowrap text-gray-400">
                                                 {{ $transaction->reference_number }}
                                             </td>
                                             <td
-                                                class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                class="inline-flex items-center p-4 space-x-2 text-sm font-normal whitespace-nowrap text-gray-400">
                                                 <svg class="w-7 h-7" aria-hidden="true" enable-background="new 0 0 780 500"
                                                     viewBox="0 0 780 500" xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -105,18 +105,28 @@
                                             </td>
                                             <td class="p-4 whitespace-nowrap">
                                                 <span
-                                                    class="bg-green-100 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-gray-700 border border-green-100
-                     @if ($transaction->payment_status === 'completed') dark:text-green-400 dark:border-green-500
-                          @elseif($transaction->payment_status === 'cancelled')
-                              dark:text-red-400 dark:border-red-500
-                          @elseif($transaction->payment_status === 'inprogress')
-                              dark:text-purple-400 dark:border-purple-500
-                          @elseif($transaction->payment_status === 'in-review')
-                              dark:text-yellow-400 dark:border-yellow-500 @endif
-                    ">{{ $transaction->payment_status }}</span>
+                                                    class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md bg-gray-700 border border-green-100
+                                                    @if ($transaction->payment_status === 'completed')
+                                                    text-green-400 border-green-500
+                                                    @elseif($transaction->payment_status === 'cancelled')
+                                                        text-red-400 border-red-500
+                                                    @elseif($transaction->payment_status === 'inprogress')
+                                                        text-purple-400 border-purple-500
+                                                    @elseif($transaction->payment_status === 'in-review')
+                                                        text-yellow-400 border-yellow-500 @endif
+                                                    ">
+                                                    @php
+                                                        $transaction->payment_status =
+                                                            $transaction->payment_status === 'inprogress'
+                                                                ? 'In Progress'
+                                                                : $transaction->payment_status;
+                                                    @endphp
+                                                    {{ $transaction->payment_status }}
+                                                </span>
                                             </td>
                                             <td>
-                                                <form action="{{ route('member.transaction.delete', $transaction->id) }}" method="post" class="inline">
+                                                <form action="{{ route('member.transaction.delete', $transaction->id) }}"
+                                                    method="post" class="inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger w-full">Delete</button>
@@ -124,11 +134,11 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                    <form id="transaction-form-desktop" action="{{ route('member.transaction.create') }}" method="post">
+                                    <form id="transaction-form-desktop" action="{{ route('member.transaction.create') }}"
+                                        method="post">
                                         @csrf
                                         <tr class="max-lg:hidden border-y-2 border-green-500 [&>td>div]:!mb-1">
-                                            <td
-                                                class="p-4 text-sm font-normal whitespace-nowrap text-white">
+                                            <td class="p-4 text-sm font-normal whitespace-nowrap text-white">
                                                 @include('components.input', [
                                                     'name' => 'name',
                                                     'type' => 'text',
@@ -138,11 +148,11 @@
                                                 ])
                                             </td>
                                             <td
-                                                class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                class="p-4 text-sm font-normal whitespace-nowrap text-gray-400">
                                                 {{ now()->format('M d, Y') }}
                                             </td>
                                             <td
-                                                class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+                                                class="p-4 text-sm font-semibold whitespace-nowrap text-white">
                                                 @include('components.input', [
                                                     'name' => 'amount',
                                                     'type' => 'number',
@@ -152,7 +162,7 @@
                                                 ])
                                             </td>
                                             <td
-                                                class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                class="p-4 text-sm font-normal whitespace-nowrap text-gray-400">
                                                 @include('components.input', [
                                                     'name' => 'reference_number',
                                                     'type' => 'number',
@@ -161,7 +171,7 @@
                                                 ])
                                             </td>
                                             <td
-                                                class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                class="inline-flex items-center p-4 space-x-2 text-sm font-normal whitespace-nowrap text-gray-400">
                                                 @include('components.input', [
                                                     'name' => 'payment_method',
                                                     'type' => 'number',
