@@ -22,7 +22,7 @@ class MemberAuthController extends Controller
     public function dashboard()
     {
         $member = Auth::guard('members')->user();
-        $transactions = $member->transactions()->latest()->get();
+        $transactions = $member->transactions()->get();
         return view('member.dashboard', compact('member', 'transactions'));
     }
 
