@@ -25,4 +25,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }, timeout);
         }
     });
+
+    const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
+    const navMenu = document.getElementById('navbar-sticky');
+
+    toggleButton.addEventListener('click', () => {
+        navMenu.classList.toggle('hidden');
+    });
 });
