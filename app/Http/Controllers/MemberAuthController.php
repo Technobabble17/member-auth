@@ -65,6 +65,14 @@ class MemberAuthController extends Controller
 
         return redirect()->route('member.dashboard');
     }
+
+    public function deleteTransaction($id)
+    {
+        $transaction = Transaction::find($id);
+        $transaction->delete();
+        return redirect()->route('member.dashboard')->with('success', 'Transaction deleted successfully');
+    }
+
     public function createTransaction(Request $request)
     {
         $request->validate(

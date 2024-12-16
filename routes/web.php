@@ -16,5 +16,6 @@ Route::middleware('auth:members')->group(function () {
     Route::get('members', [MemberAuthController::class, 'showMembers'])->name('member.index');
     Route::post('member/logout', [MemberAuthController::class, 'logout'])->name('member.logout');
     Route::post('member/dashboard', [MemberAuthController::class, 'createTransaction'])->name('member.transaction.create');
-    Route::get('member/dashboard', [MemberAuthController::class, 'dashboard'])->name('member.dashboard');
+    Route::delete('member/delete/{id}', [MemberAuthController::class, 'deleteTransaction'])->name('member.transaction.delete');
+        Route::get('member/dashboard', [MemberAuthController::class, 'dashboard'])->name('member.dashboard');
 });

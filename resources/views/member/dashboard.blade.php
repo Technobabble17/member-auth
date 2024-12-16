@@ -115,13 +115,20 @@
                               dark:text-yellow-400 dark:border-yellow-500 @endif
                     ">{{ $transaction->payment_status }}</span>
                                             </td>
+                                            <td>
+                                                <form action="{{ route('member.transaction.delete', $transaction->id) }}" method="post" class="inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger w-full">Delete</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
-                                    <form action="{{ route('member.transaction.create') }}" method="post">
+                                    <form id="transaction-form-desktop" action="{{ route('member.transaction.create') }}" method="post">
                                         @csrf
-                                        <tr class="max-lg:hidden">
+                                        <tr class="max-lg:hidden border-y-2 border-green-500 [&>td>div]:!mb-1">
                                             <td
-                                                class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+                                                class="p-4 text-sm font-normal whitespace-nowrap text-white">
                                                 @include('components.input', [
                                                     'name' => 'name',
                                                     'type' => 'text',
